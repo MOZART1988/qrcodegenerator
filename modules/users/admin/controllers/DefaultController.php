@@ -56,14 +56,12 @@ class DefaultController extends MBTAController
 
         if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            print_r($model->errors);
-            print_r($model->newPassword);
-            $model->password = '';
-            return $this->render('create', [
-                'model' => $model,
-            ]);
         }
+
+        $model->password = '';
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -78,12 +76,12 @@ class DefaultController extends MBTAController
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            $model->password = '';
-            return $this->render('update', [
-                'model' => $model,
-            ]);
         }
+
+        $model->password = '';
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -110,9 +108,9 @@ class DefaultController extends MBTAController
     {
         if (($model = Users::findOne($id)) !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     public function actionLogin()
@@ -126,16 +124,12 @@ class DefaultController extends MBTAController
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
 
-            /*$user = Users::findOne(Yii::$app->getUser()->id);
-            $language = Languages::findOne($user->lang_id);
-            Yii::$app->getSession()->set('admin-language', $language->id);*/
-
             return $this->goBack();
-        } else {
-            return $this->render('login', [
-                'model' => $model,
-            ]);
         }
+
+        return $this->render('login', [
+            'model' => $model,
+        ]);
     }
 
     public function actionLogout()

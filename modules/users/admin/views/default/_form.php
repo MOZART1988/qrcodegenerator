@@ -30,6 +30,8 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'role')->dropDownList(\app\modules\users\models\Users::$roles,
                 ['prompt' => 'Выберите роль пользователя']) ?>
 
+            <?= $form->field($model, 'qrcode')->textInput(['disable' => true])?>
+
             <?= $form->field($model, 'is_active')->checkbox() ?>
 
             <div class="form-group">

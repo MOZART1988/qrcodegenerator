@@ -1,16 +1,15 @@
 <?php
 
-namespace app\modules\users\models;
+namespace app\modules\promo_codes\models;
 
-use Yii;
+use app\modules\promo_codes\models\PromoCodes;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\users\models\Users;
 
 /**
- * UsersSearch represents the model behind the search form about `app\modules\users\models\Users`.
+ * PromoCodesSearch represents the model behind the search form about `app\modules\promo_codes\models\PromoCodes`.
  */
-class UsersSearch extends Users
+class PromoCodesSearch extends PromoCodes
 {
     /**
      * @inheritdoc
@@ -19,7 +18,7 @@ class UsersSearch extends Users
     {
         return [
             [['id', 'is_active'], 'integer'],
-            [['username', 'email', 'create_date', 'update_date', 'qrcode'], 'safe'],
+            [['code'], 'safe'],
         ];
     }
 
@@ -28,7 +27,6 @@ class UsersSearch extends Users
      */
     public function scenarios()
     {
-        // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
 
@@ -41,7 +39,7 @@ class UsersSearch extends Users
      */
     public function search($params)
     {
-        $query = Users::find();
+        $query = PromoCodes::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -59,10 +57,7 @@ class UsersSearch extends Users
             'is_active' => $this->is_active,
         ]);
 
-        $query->andFilterWhere(['like', 'username', $this->username])
-            ->andFilterWhere(['like', 'password', $this->password])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'qrcode', $this->qrcode]);
+        $query->andFilterWhere(['like', 'code', $this->code]);
 
         return $dataProvider;
     }

@@ -93,6 +93,11 @@ $current_user = \app\modules\users\models\Users::findOne(\Yii::$app->getUser()->
                                         'url' => ['/users/default/index']
                                     ],
                                     [
+                                        'label' => 'Промо коды',
+                                        'icon' => 'th',
+                                        'url' => ['/promo_codes/default/index']
+                                    ],
+                                    [
                                         'label' => 'Модули',
                                         'icon' => 'th',
                                         'url' => '#',

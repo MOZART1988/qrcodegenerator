@@ -19,17 +19,13 @@ use yii\web\UploadedFile;
  * @property string $first_name
  * @property string $last_name
  * @property string $role
- * @property integer $is_from_social
- * @property integer $is_finish_registration
  * @property string $create_date
  * @property string $update_date
  * @property integer $is_active
  * @property integer $lang_id
- * @property string $about
- * @property string $avatar
- * @property string $phone
  *
- * @property Pages[] $pages
+ * @property string $qrcode
+ *
  */
 class Users extends ActiveRecord
 {
@@ -75,6 +71,7 @@ class Users extends ActiveRecord
         return [
             [['username', 'email', 'password', 'role'], 'required'],
             [['newPassword'], 'string', 'min' => 6],
+            [['qrcode'], 'string'],
             [['username'], 'unique'],
             [['email'], 'email'],
             [['email'], 'unique'],
@@ -102,10 +99,9 @@ class Users extends ActiveRecord
             'first_name' => Yii::t('users', 'Имя'),
             'last_name' => Yii::t('users', 'Фамилия'),
             'string' => Yii::t('users', 'Об авторе'),
-            'avatar' => Yii::t('users', 'Аватар'),
             'imageFile' => Yii::t('users', 'Аватар'),
-            'about' => Yii::t('users', 'Об авторе'),
             'lang_id' => Yii::t('users', 'Язык'),
+            'qrcode' => Yii::t('users', 'QR Код')
         ];
     }
 
@@ -148,7 +144,7 @@ class Users extends ActiveRecord
 
     public function isAdmin()
     {
-        return in_array($this->role, ['admin', 'editor', 'author']);
+        return in_array($this->role, ['admin', 'editor', 'author'], false);
     }
 
     public static function getAuthors()

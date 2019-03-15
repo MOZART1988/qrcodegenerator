@@ -16,6 +16,7 @@ Thumbs.db
 /vendor
 
 /config/local.php
+/config/db_console.php
 
 #components js from composer
 /components/jquery
@@ -64,7 +65,6 @@ Apache-2.4_vhost.conf
 runtime
 .idea
 
-/web/**
 libs
 
 /web/*.txt

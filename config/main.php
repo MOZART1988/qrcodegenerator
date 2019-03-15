@@ -47,35 +47,14 @@ $result = [
             'menu' => [
                 'class' => 'app\modules\menu\Module'
             ],
-            'pages' => [
-                'class' => \app\modules\pages\Module::class
-            ],
-            'galleries' => [
-                'class' => \app\modules\galleries\Module::class
-            ],
-            'content' => [
-                'class' => \app\modules\content\Module::class
-            ],
-            'image' => [
-                'class' => \app\modules\image\Module::class
-            ],
-            'histories' => [
-                'class' => \app\modules\histories\Module::class
-            ],
-            'videos' => [
-                'class' => \app\modules\videos\Module::class
-            ],
-            'slides' => [
-                'class' => \app\modules\slides\Module::class
-            ],
-            'poll' => [
-                'class' => \app\modules\poll\Module::class
-            ],
             'custom_variables' => [
                 'class' => \app\modules\custom_variables\Module::class
             ],
             'translate' => [
                 'class' => \app\modules\translate\Module::class
+            ],
+            'promo_codes' => [
+                'class' => \app\modules\promo_codes\Module::class
             ]
         ],
         'components' => [
@@ -137,12 +116,6 @@ $result = [
         'basePath' => dirname(__DIR__),
         'bootstrap' => ['log'],
         'controllerNamespace' => 'app\console\controllers',
-        'controllerMap' => [
-            'migrate-engine' => [
-                'class' => 'yii\console\controllers\MigrateController',
-                'migrationPath' => '@vendor/rocketfirm/engine/migrations',
-            ],
-        ],
         'components' => [
             'log' => [
                 'targets' => [
@@ -156,22 +129,6 @@ $result = [
                 'class' => 'creocoder\flysystem\LocalFilesystem',
                 'path' => '@web/media',
             ],
-        ],
-        'params' => [
-            'pages' => [
-                'image' => [
-                    'sizes' => [
-                        [
-                            'width' => 365,
-                            'height' => 205,
-                            'minWidth' => 400,
-                            'minHeight' => 200,
-                            'maxWidth' => 1000,
-                            'maxHeight' => 500
-                        ]
-                    ],
-                ]
-            ]
         ]
     ],
 ];
