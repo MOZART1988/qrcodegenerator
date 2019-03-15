@@ -1,0 +1,20 @@
+{
+  "name": "mozart/template",
+  "description": "Set of components and libraries, that powers up Mozart Websites",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "mozart",
+      "email": "wfwdave@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "mtemplate\\": "",
+      "mtemplate\\mclasses\\": "mclasses",
+      "mtemplate\\mcontrollers\\": "mcontrollers",
+      "mtemplate\\traits\\": "traits"
+    }
+  }
+}
